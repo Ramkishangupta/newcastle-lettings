@@ -9,7 +9,7 @@ const SocialLink = ({ href, icon, platform }) => (
     className="text-white"
     aria-label={`Visit our ${platform} page`}
     target="_blank"
-    rel="noopener noreferrer" // Security enhancement
+    rel="noopener noreferrer" 
   >
     {icon}
   </a>
@@ -24,7 +24,7 @@ SocialLink.propTypes = {
 const Footer = () => (
   <>
     {/* Social Media Section */}
-    <div className="p-4 text-center bg-[#6451CF] flex justify-evenly flex-wrap">
+    <div className="p-4 text-center bg-[#3b5be4] flex justify-evenly flex-wrap">
       <p className="text-sm text-white">Get connected with us on social networks!</p>
       <div className="mt-2 flex justify-center space-x-4 gap-2">
         <SocialLink href="#" icon={<FaFacebookF />} platform="Facebook" />
