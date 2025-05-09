@@ -7,12 +7,11 @@ import {
 
 const navItems = [
   {
-    name: 'Search Properties',
-    dropdown: ['Residential', 'Commercial', 'Industrial']
+    name: 'Search Properties'
   },
   {
     name: 'Services',
-    dropdown: ['Valuation', 'Management', 'Consultancy']
+    dropdown: ['MORTAGE ADVICE','PROPERTY VALUATION','LETTING GUIDE','NUYING GUIDE','TENANT FINDING','TENENT EVICTION']
   },
   {
     name: 'Property Maintenance',
@@ -91,10 +90,10 @@ const DesktopNav = ({ navItems, isScrolled, setOpenDropdown, openDropdown }) => 
 
 // Mobile Navbar
 const MobileNav = ({
-  mobileOpen, setMobileOpen, searchOpen, setSearchOpen, mobileDropdown, setMobileDropdown
+  mobileOpen, setMobileOpen, searchOpen, setSearchOpen, mobileDropdown, setMobileDropdown, isScrolled
 }) => (
   <>
-    <div className="md:hidden bg-[#233366] w-full flex items-center justify-between px-4 py-4">
+    <div className={`md:hidden w-full flex items-center justify-between px-4 py-4 ${isScrolled ? 'bg-[#233366]' : 'bg-transparent'}`}>
       <span className="text-white text-4xl font-bold">SW</span>
       <div className="flex items-center gap-6">
         <button onClick={() => setSearchOpen(!searchOpen)}><FaSearch className="text-white text-xl" /></button>
@@ -192,14 +191,14 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md' : 'bg-transparent'}`}>
+    <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-[#f0f0f0]' : 'bg-transparent'}`}>
       <DesktopNav
         navItems={navItems}
         isScrolled={isScrolled}
         setOpenDropdown={setOpenDropdown}
         openDropdown={openDropdown}
       />
-      <MobileNav
+      <MobileNav 
         navItems={navItems}
         mobileOpen={mobileOpen}
         setMobileOpen={setMobileOpen}
@@ -207,6 +206,7 @@ const Navbar = () => {
         setSearchOpen={setSearchOpen}
         mobileDropdown={mobileDropdown}
         setMobileDropdown={setMobileDropdown}
+        isScrolled={isScrolled}
       />
     </nav>
   );

@@ -13,7 +13,7 @@ function Home() {
       
       {/* Hero Section with Background Image */}
       <div 
-        className="relative min-h-screen w-full flex items-center justify-center overflow-hidden"
+        className="relative h-[80vh] flex items-center justify-center overflow-hidden"
         style={{
           backgroundImage: `url(${background})`,
           backgroundSize: 'cover',
@@ -23,7 +23,7 @@ function Home() {
         }}
       >
         {/* Gradient Overlay for better text visibility */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/30"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 to-black/30"></div>
         
         {/* Hero Content */}
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
