@@ -11,7 +11,7 @@ const navItems = [
   },
   {
     name: 'Services',
-    dropdown: ['MORTAGE ADVICE','PROPERTY VALUATION','LETTING GUIDE','NUYING GUIDE','TENANT FINDING','TENENT EVICTION']
+    dropdown: ['Mortage Advice','Property Valuation','Letting Guide','Buying Guide','Tenant Finding','Tenant Eviction','Legal Certificates','Investment Guide','Management Fees']
   },
   {
     name: 'Property Maintenance',
@@ -38,8 +38,8 @@ const Hamburger = memo(({ open }) => (
 const DesktopNav = ({ navItems, isScrolled, setOpenDropdown, openDropdown }) => (
   <div className="hidden md:flex items-center justify-between px-12 py-6 w-full">
     <div className="flex flex-col items-start">
-      <span className={`text-5xl font-bold ${isScrolled ? 'text-black' : 'text-white'}`}>SW</span>
-      <span className={`text-xs mt-1 ${isScrolled ? 'text-black' : 'text-white'}`}>Sanderson<br />Weatherall</span>
+      <span className={`text-5xl font-bold ${isScrolled ? 'text-black' : 'text-white'}`}>NL</span>
+      {/* <span className={`text-xs mt-1 ${isScrolled ? 'text-black' : 'text-white'}`}></span> */}
     </div>
 
     <div className="flex-1 flex justify-center space-x-12">
@@ -185,7 +185,7 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > 10);
+    const onScroll = () => setIsScrolled(window.scrollY >   0);
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
   }, []);

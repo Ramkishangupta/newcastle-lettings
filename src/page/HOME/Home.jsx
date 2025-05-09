@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react';
-import Navbar from '../components/Navbar';
-import background from '../assets/Images/Home/background1.jpg';
+import Navbar from '../../components/Navbar';
+import background from '../../assets/Images/Home/background1.jpg';
+import PropertyBanner from '../../components/PropertyBanner';
+import Card from '../../components/Card';
+import cardsData from './cardsData' ;    
 
 function Home() {
   useEffect(() => {
@@ -44,6 +47,26 @@ function Home() {
         <h2 className="text-3xl font-bold text-center mb-12">Our Services</h2>
         {/* Add your content sections here */}
       </div>
+
+      <PropertyBanner
+        title="Find Properties in Newcastle"
+        description="Ideal Properties offer a variety of professional lettings in Newcastle, with our decades of combined experience we can help you find the perfect home in the North East. Our team are talented and dedicated to providing a reliable and professional services that you can trust."
+      />
+      <div className="flex flex-wrap gap-4 p-6 justify-center">
+      {cardsData.map((item) => (
+        <Card
+          key={item.id}
+          image={item.image}
+          title={item.title}
+          location={item.location}
+          Place={item.Place}
+          price={item.price}
+          beds={item.beds}
+          baths={item.baths}
+          floors={item.floors}
+        />
+      ))}
+    </div>
     </>
   );
 }
