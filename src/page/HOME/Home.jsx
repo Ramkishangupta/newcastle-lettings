@@ -4,7 +4,6 @@ import HeroSection from '../../components/HeroSection';
 import PropertyBanner from '../../components/PropertyBanner';
 import Footer from '../../components/Footer';
 import Card from '../../components/Card';
-import GuideSection from './Sections/GuideSection';
 import cardsData from './Sections/Data/cardsData';
 function Home() {
   useEffect(() => {
@@ -35,7 +34,6 @@ function Home() {
         />
       ))}
     </div>
-    <GuideSection />
     <Footer></Footer>
     </>
   );
