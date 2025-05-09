@@ -3,7 +3,8 @@ import Navbar from '../../components/Navbar';
 import background from '../../assets/Images/Home/background1.jpg';
 import PropertyBanner from '../../components/PropertyBanner';
 import Card from '../../components/Card';
-import cardsData from './cardsData' ;    
+import cardsData from './cardsData' ;   
+import Footer from '../../components/Footer';
 
 function Home() {
   useEffect(() => {
@@ -67,6 +68,7 @@ function Home() {
         />
       ))}
     </div>
+    <Footer></Footer>
     </>
   );
 }

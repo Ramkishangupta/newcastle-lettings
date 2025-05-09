@@ -36,7 +36,7 @@ const Hamburger = memo(({ open }) => (
 
 // Desktop Navbar
 const DesktopNav = ({ navItems, isScrolled, setOpenDropdown, openDropdown }) => (
-  <div className="hidden md:flex items-center justify-between px-12 py-6 w-full">
+  <div className={`hidden md:flex items-center justify-between px-12 py-6 w-full ${isScrolled ? 'bg-[#f0f0f0]' : 'bg-transparent'}`}>
     <div className="flex flex-col items-start">
       <span className={`text-5xl font-bold ${isScrolled ? 'text-black' : 'text-white'}`}>NL</span>
       {/* <span className={`text-xs mt-1 ${isScrolled ? 'text-black' : 'text-white'}`}></span> */}
@@ -191,7 +191,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-[#f0f0f0]' : 'bg-transparent'}`}>
+    <nav className={`fixed w-full z-50 transition-all duration-300`}>
       <DesktopNav
         navItems={navItems}
         isScrolled={isScrolled}
