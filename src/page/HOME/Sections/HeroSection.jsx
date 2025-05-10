@@ -42,8 +42,9 @@ function HeroSection({ images, heading, subheading, buttonText }) {
           <p className="text-xl md:text-2xl text-white/90 mb-8 font-light">
             {subheading}
           </p>
-          <button className="bg-white text-black px-8 py-4 rounded-md font-medium hover:bg-opacity-90 transition-all duration-300 transform hover:scale-105 shadow-lg">
+          <button className="bg-transparent text-white border-1 border-white px-8 py-3 font-medium hover:bg-opacity-90 transition-all duration-300 transform cursor-pointer hover:bg-[#273d5a9f]">
             {buttonText}
+            <span className="text-white pl-3">→</span>
           </button>
         </div>
       </div>

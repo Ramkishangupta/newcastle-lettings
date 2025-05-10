@@ -13,8 +13,8 @@ function Home() {
     <>
       <Navbar />
       <HomeHeroSection />
-      <PropertySection />
       <CardsSection />
+      <PropertySection />
       <Footer/>
     </>
   );

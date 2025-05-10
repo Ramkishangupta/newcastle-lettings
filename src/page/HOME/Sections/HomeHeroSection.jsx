@@ -1,5 +1,5 @@
 import React from 'react';
-import HeroSection from '../../../components/HeroSection'; // Reusing the general component
+import HeroSection from './HeroSection';
 import background1 from '../../../assets/Images/Home/background1.jpg';
 import background2 from '../../../assets/Images/Home/background2.jpg';
 
