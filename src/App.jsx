@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import Home from './page/HOME/Home'
-import Service from './page/SERVICES/Service'
+// import SearchProperties from './components/SearchProperties'
 
 // import Service from './page/SERVICES/Service'
 function App() {
@@ -10,6 +10,7 @@ function App() {
       <div>
         <Home></Home>
         {/* <Service></Service> */}
+        {/* <SearchProperties/> */}
       </div>
     </BrowserRouter>
   )
