@@ -5,7 +5,7 @@ const SearchProperties = () => {
   const [properties, setProperties] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  // Dummy data to simulate an API response
+
   const mockData = [
     {
       id: 1,
@@ -30,7 +30,6 @@ const SearchProperties = () => {
   useEffect(() => {
     setLoading(true);
     setTimeout(() => {
-      // In a real app, this is where you'd fetch from an API
       setProperties(mockData.filter(p => purpose === 'for-rent')); 
       setLoading(false);
     }, 1000);
