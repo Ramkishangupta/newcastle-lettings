@@ -6,8 +6,8 @@ function App() {
   return (
     <BrowserRouter>
       <div>
-        <Home></Home>
-        {/* <Service></Service> */}
+        {/* <Home></Home> */}
+        <Service></Service>
       </div>
     </BrowserRouter>
   )

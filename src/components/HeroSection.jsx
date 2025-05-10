@@ -1,38 +1,54 @@
-import React from 'react'
-import background from '../assets/Images/Home/background1.jpg';
+import React, { useEffect, useState } from 'react';
 
-function HeroSection() {
+function HeroSection({ images, heading, subheading, buttonText }) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % images.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [images.length]);
+
   return (
-    <div>
-      {/* Hero Section with Background Image */}
-      <div 
-        className="relative h-[80vh] flex items-center justify-center overflow-hidden"
-        style={{
-          backgroundImage: `url(${background})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-          backgroundAttachment: 'fixed'
-        }}
-      >
-        {/* Gradient Overlay for better text visibility */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/80 to-black/30"></div>
-        
-        {/* Hero Content */}
-        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
+    <div className="relative h-[80vh] overflow-hidden">
+      {/* Background Image Slideshow */}
+      {images.map((img, index) => (
+        <div
+          key={index}
+          className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+            index === currentIndex ? 'opacity-100' : 'opacity-0'
+          }`}
+          style={{
+            backgroundImage: `url(${img})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            backgroundAttachment: 'fixed',
+          }}
+        />
+      ))}
+
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/80 to-black/30 z-10"></div>
+
+      {/* Hero Content */}
+      <div className="relative z-20 flex items-center justify-center h-full text-center px-4">
+        <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">
-            Sanderson Weatherall
+            {heading}
           </h1>
           <p className="text-xl md:text-2xl text-white/90 mb-8 font-light">
-            Excellence in property services
+            {subheading}
           </p>
           <button className="bg-white text-black px-8 py-4 rounded-md font-medium hover:bg-opacity-90 transition-all duration-300 transform hover:scale-105 shadow-lg">
-            Discover More
+            {buttonText}
           </button>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default HeroSection
+export default HeroSection;
