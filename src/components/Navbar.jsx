@@ -1,28 +1,15 @@
 import { useState, useEffect, memo, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import {
-  FaSearch, FaEnvelope, FaPhone, FaInstagram,
-  FaLinkedinIn, FaTwitter, FaFacebookF, FaChevronDown
-} from 'react-icons/fa';
+import { FaSearch, FaEnvelope, FaPhone, FaInstagram, FaLinkedinIn, FaTwitter, FaFacebookF, FaChevronDown } from 'react-icons/fa';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 
 const navItems = [
-  {
-    name: 'Search Properties'
-  },
-  {
-    name: 'Services',
-    dropdown: ['Mortage Advice','Property Valuation','Letting Guide','Buying Guide','Tenant Finding','Tenant Eviction','Legal Certificates','Investment Guide','Management Fees']
-  },
-  {
-    name: 'Property Maintenance',
-    dropdown: ['Request Service', 'Maintenance Plans']
-  },
-  { name: 'Report A Repair' },
-  {
-    name: 'About',
-    dropdown: ['Our Team', 'History', 'Testimonials']
-  },
-  { name: 'Contact Us' },
+  { name: 'Search Properties', path: '/' },
+  { name: 'Services', path: '/services' },
+  { name: 'Property Maintenance', dropdown: ['Request Service', 'Maintenance Plans'], path: '/property-maintenance' },
+  { name: 'Report A Repair', path: '/report-repair' },
+  { name: 'About', dropdown: ['Our Team', 'History', 'Testimonials'], path: '/about' },
+  { name: 'Contact Us', path: '/contact' },
 ];
 
 // Hamburger Icon Component
@@ -39,23 +26,22 @@ const DesktopNav = ({ navItems, isScrolled, setOpenDropdown, openDropdown }) => 
   <div className={`hidden md:flex items-center justify-between px-12 py-6 w-full ${isScrolled ? 'bg-[#f0f0f0]' : 'bg-transparent'}`}>
     <div className="flex flex-col items-start">
       <span className={`text-5xl font-bold ${isScrolled ? 'text-black' : 'text-white'}`}>NL</span>
-      {/* <span className={`text-xs mt-1 ${isScrolled ? 'text-black' : 'text-white'}`}></span> */}
     </div>
 
     <div className="flex-1 flex justify-center space-x-12">
-      {navItems.map(({ name, dropdown }) => (
+      {navItems.map(({ name, dropdown, path }) => (
         <div
           key={name}
           className="relative"
           onMouseEnter={() => dropdown && setOpenDropdown(name)}
           onMouseLeave={() => dropdown && setOpenDropdown(null)}
         >
-          <button className={`relative font-medium flex items-center gap-2 cursor-pointer ${isScrolled ? 'text-black' : 'text-white'} 
+          <Link to={path} className={`relative font-medium flex items-center gap-2 cursor-pointer ${isScrolled ? 'text-black' : 'text-white'} 
             after:absolute after:left-0 after:-bottom-4 after:h-[3px] after:w-0 after:bg-[#3b5be4] 
             after:transition-all after:duration-300 hover:after:w-full`}>
             {name}
             {dropdown && <FaChevronDown className="ml-1 text-xs" />}
-          </button>
+          </Link>
 
           <AnimatePresence>
             {dropdown && openDropdown === name && (
@@ -89,9 +75,7 @@ const DesktopNav = ({ navItems, isScrolled, setOpenDropdown, openDropdown }) => 
 );
 
 // Mobile Navbar
-const MobileNav = ({
-  mobileOpen, setMobileOpen, searchOpen, setSearchOpen, mobileDropdown, setMobileDropdown, isScrolled
-}) => (
+const MobileNav = ({ mobileOpen, setMobileOpen, searchOpen, setSearchOpen, mobileDropdown, setMobileDropdown, isScrolled }) => (
   <>
     <div className={`md:hidden w-full flex items-center justify-between px-4 py-4 ${isScrolled ? 'bg-[#233366]' : 'bg-transparent'}`}>
       <span className="text-white text-4xl font-bold">SW</span>
@@ -118,7 +102,7 @@ const MobileNav = ({
 
           {/* Nav Items */}
           <div className="flex-1 flex flex-col overflow-y-auto">
-            {navItems.map(({ name, dropdown }, index) => (
+            {navItems.map(({ name, dropdown, path }, index) => (
               <motion.div
                 key={name}
                 initial={{ opacity: 0 }}
@@ -126,7 +110,8 @@ const MobileNav = ({
                 transition={{ delay: 0.2 + index * 0.07 }}
                 className="border-b border-[#2e4170]"
               >
-                <button
+                <Link
+                  to={path}
                   className="w-full text-left text-white font-medium text px-4 py-4 flex justify-between"
                   onClick={() => setMobileDropdown(mobileDropdown === name ? null : name)}
                 >
@@ -134,7 +119,7 @@ const MobileNav = ({
                   {dropdown && (
                     <FaChevronDown className={`text-xs transition-transform ${mobileDropdown === name ? 'rotate-180' : ''}`} />
                   )}
-                </button>
+                </Link>
 
                 <AnimatePresence>
                   {dropdown && mobileDropdown === name && (
@@ -185,7 +170,7 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY >   0);
+    const onScroll = () => setIsScrolled(window.scrollY > 0);
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
