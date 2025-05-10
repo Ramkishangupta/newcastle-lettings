@@ -1,78 +1,48 @@
-import React, { useState, useEffect } from 'react';
 
-const SearchProperties = () => {
-  const [purpose, setPurpose] = useState('for-rent');
-  const [properties, setProperties] = useState([]);
-  const [loading, setLoading] = useState(false);
+import React from 'react';
 
 
-  const mockData = [
-    {
-      id: 1,
-      title: 'Modern Apartment in City Centre',
-      price: '£950/month',
-      beds: 2,
-      baths: 1,
-      area: '75 sqm',
-      image: 'https://via.placeholder.com/300x200'
-    },
-    {
-      id: 2,
-      title: 'Cozy 1 Bedroom Flat',
-      price: '£650/month',
-      beds: 1,
-      baths: 1,
-      area: '45 sqm',
-      image: 'https://via.placeholder.com/300x200'
-    }
-  ];
 
-  useEffect(() => {
-    setLoading(true);
-    setTimeout(() => {
-      setProperties(mockData.filter(p => purpose === 'for-rent')); 
-      setLoading(false);
-    }, 1000);
-  }, [purpose]);
 
+
+
+const properties = [
+  {
+    id: 1,
+    title: 'Modern Apartment in Jesmond',
+    description: '2 bed · 1 bath · £1,200/month',
+  },
+  {
+    id: 2,
+    title: 'Spacious Flat near City Centre',
+    description: '3 bed · 2 bath · £1,800/month',
+  },
+  {
+    id: 3,
+    title: 'Student House in Heaton',
+    description: '4 bed · 2 bath · £1,500/month',
+  },
+];
+
+const SearchPropertiesSection = () => {
   return (
-    <div className="search-page" style={{ padding: '2rem' }}>
-      <h2>Search Properties</h2>
+    <section className="p-6 bg-gray-50 min-h-screen">
+      <div className="max-w-7xl mx-auto">
+        <h2 className="text-3xl font-bold text-gray-800 mb-6">Search Properties</h2>
 
-      {/* Filter Bar */}
-      <div style={{ marginBottom: '1rem' }}>
-        <label>Purpose:&nbsp;</label>
-        <select value={purpose} onChange={(e) => setPurpose(e.target.value)}>
-          <option value="for-rent">For Rent</option>
-          <option value="for-sale">For Sale</option>
-        </select>
-      </div>
-
-      {/* Properties List */}
-      {loading ? (
-        <p>Loading properties...</p>
-      ) : (
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {properties.map((property) => (
-            <div
-              key={property.id}
-              style={{
-                border: '1px solid #ccc',
-                padding: '1rem',
-                width: '300px'
-              }}
-            >
-              <img src={property.image} alt={property.title} style={{ width: '100%' }} />
-              <h3>{property.title}</h3>
-              <p>{property.price}</p>
-              <p>{property.beds} Bed | {property.baths} Bath</p>
-              <p>Area: {property.area}</p>
+            <div key={property.id} className="bg-white rounded-xl shadow-md p-5 hover:shadow-lg transition">
+              <h3 className="text-xl font-semibold text-gray-700 mb-2">{property.title}</h3>
+              <p className="text-gray-500">{property.description}</p>
             </div>
           ))}
         </div>
-      )}
-    </div>
+      </div>
+    </section>
   );
 };
 
-export default SearchProperties;
+export default SearchPropertiesSection;
+
+
