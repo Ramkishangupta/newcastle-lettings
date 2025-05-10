@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import { useNavigate } from 'react-router-dom';
 
 const Card = ({
+  id,
   image,
   title,
   location,
@@ -10,9 +11,14 @@ const Card = ({
   price,
   beds,
   baths,
-  floors,
-  onButtonClick,
+  floors
 }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/property`); 
+  };
+
   return (
     <div className="w-[320px] h-auto rounded-lg shadow-md overflow-hidden border border-gray-200 bg-white flex flex-col">
       {/* Image Section */}
@@ -30,7 +36,7 @@ const Card = ({
         <h2 className="text-base sm:text-lg font-medium leading-relaxed">
           {title}
           <br />
-          <span className="text-sm text-gray-600">{location}</span>
+          <span className="text-sm text-blue-900">{location}</span>
         </h2>
         <h3 className="text-xl font-bold mt-2 underline uppercase">{place}</h3>
         <p className="text-lg font-semibold mt-2">
@@ -48,8 +54,8 @@ const Card = ({
       <div className="flex justify-center items-center p-4">
         <button
           type="button"
-          onClick={onButtonClick}
-          className="w-[200px] text-green-600 border-2 border-green-600 font-semibold py-2 text-center cursor-pointer transition-colors duration-300 hover:bg-green-600 hover:text-white"
+          onClick={handleClick}
+          className="w-[200px] text-[#233366] border-2 border-[#233366] font-semibold py-2 text-center cursor-pointer transition-colors duration-300 hover:bg-[#233366] hover:text-white"
           aria-label={`View details for ${title}`} 
         >
           View
@@ -68,11 +74,7 @@ Card.propTypes = {
   beds: PropTypes.number.isRequired,
   baths: PropTypes.number.isRequired,
   floors: PropTypes.number.isRequired,
-  onButtonClick: PropTypes.func,
-};
-
-Card.defaultProps = {
-  onButtonClick: () => {},
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
 };
 
 export default Card;
