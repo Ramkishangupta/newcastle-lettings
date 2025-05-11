@@ -9,7 +9,7 @@ function HomeHeroSection() {
   return (
     <HeroSection
       images={images}
-      heading="Sanderson Weatherall"
+      heading="Newcastle Lettings"
       subheading="Excellence in property services"
       buttonText="Discover More"
     />
