@@ -1,5 +1,10 @@
-import SearchProperties from '../../../components/SearchProperties';
+// import SearchProperties from '../../../components/SearchProperties';
+
 import React, { useState } from "react";
+import Navbar from "../../../components/Navbar";
+import Footer from "../../../components/Footer";
+import backgroundImage from "../../../assets/images/home/background1.jpg";
+// import searchProperties from 'src\page\HOME\Sections\Data\searchProperties'
 
 const SearchPropertiesSection = () => {
   const properties = [
@@ -21,7 +26,6 @@ const SearchPropertiesSection = () => {
       property.location.toLowerCase().includes(searchText.toLowerCase());
 
     const matchesType = selectedType === "All" || property.type === selectedType;
-
     const matchesMin = minPrice === "" || property.price >= parseInt(minPrice);
     const matchesMax = maxPrice === "" || property.price <= parseInt(maxPrice);
 
@@ -29,70 +33,82 @@ const SearchPropertiesSection = () => {
   });
 
   return (
-    <section className="px-6 py-10 bg-gray-50 min-h-screen">
-      <div className="max-w-5xl mx-auto">
-        <h2 className="text-4xl font-bold text-gray-900 mb-8 text-center">Find Your Ideal Property</h2>
+    <div
+      className="bg-cover bg-center min-h-screen"
+      style={{ backgroundImage: 'url(${backgroundImage})' }}
+    >
+      <div className="bg-gray-100 bg-opacity-90 min-h-screen">
+        <Navbar />
+        <section className="px-6 py-10">
+          <h2 className="text-4xl font-bold text-gray-900 mb-8 text-center pt-24">
+            Find Your Ideal Property
+          </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-10">
-          <input
-            type="text"
-            value={searchText}
-            onChange={(e) => setSearchText(e.target.value)}
-            placeholder="Search title or location"
-            className="col-span-2 p-3 rounded-xl border border-gray-300 focus:ring-blue-500 focus:ring-2 shadow-sm"
-          />
+          <div className="max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-10">
+              <input
+                type="text"
+                value={searchText}
+                onChange={(e) => setSearchText(e.target.value)}
+                placeholder="Search title or location"
+                className="col-span-2 p-3 rounded-xl border border-gray-300 focus:ring-blue-500 focus:ring-2 shadow-sm"
+              />
 
-          <select
-            value={selectedType}
-            onChange={(e) => setSelectedType(e.target.value)}
-            className="col-span-1 p-3 rounded-xl border border-gray-300 focus:ring-blue-500 focus:ring-2 shadow-sm"
-          >
-            <option value="All">All Types</option>
-            <option value="Flat">Flat</option>
-            <option value="Apartment">Apartment</option>
-            <option value="House">House</option>
-          </select>
+              <select
+                value={selectedType}
+                onChange={(e) => setSelectedType(e.target.value)}
+                className="col-span-1 p-3 rounded-xl border border-gray-300 focus:ring-blue-500 focus:ring-2 shadow-sm"
+              >
+                <option value="All">All Types</option>
+                <option value="Flat">Flat</option>
+                <option value="Apartment">Apartment</option>
+                <option value="House">House</option>
+              </select>
 
-          <input
-            type="number"
-            value={minPrice}
-            onChange={(e) => setMinPrice(e.target.value)}
-            placeholder="Min Price"
-            className="p-3 rounded-xl border border-gray-300 focus:ring-blue-500 focus:ring-2 shadow-sm"
-          />
+              <input
+                type="number"
+                value={minPrice}
+                onChange={(e) => setMinPrice(e.target.value)}
+                placeholder="Min Price"
+                className="p-3 rounded-xl border border-gray-300 focus:ring-blue-500 focus:ring-2 shadow-sm"
+              />
 
-          <input
-            type="number"
-            value={maxPrice}
-            onChange={(e) => setMaxPrice(e.target.value)}
-            placeholder="Max Price"
-            className="p-3 rounded-xl border border-gray-300 focus:ring-blue-500 focus:ring-2 shadow-sm"
-          />
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {filteredData.map((property) => (
-            <div
-              key={property.id}
-              className="p-6 bg-white rounded-2xl border border-gray-200 shadow hover:shadow-lg transition"
-            >
-              <h3 className="text-2xl font-semibold text-gray-800 mb-1">{property.title}</h3>
-              <p className="text-gray-500">{property.location}</p>
-              <p className="text-lg text-blue-600 font-semibold mt-2">£{property.price} / month</p>
-              <span className="inline-block mt-2 text-sm px-3 py-1 bg-blue-100 text-blue-700 rounded-full">
-                {property.type}
-              </span>
+              <input
+                type="number"
+                value={maxPrice}
+                onChange={(e) => setMaxPrice(e.target.value)}
+                placeholder="Max Price"
+                className="p-3 rounded-xl border border-gray-300 focus:ring-blue-500 focus:ring-2 shadow-sm"
+              />
             </div>
-          ))}
 
-          {filteredData.length === 0 && (
-            <p className="col-span-full text-center text-gray-500 text-lg">No matching properties found.</p>
-          )}
-        </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {filteredData.map((property) => (
+                <div
+                  key={property.id}
+                  className="p-6 bg-white rounded-2xl border border-gray-200 shadow hover:shadow-lg transition"
+                >
+                  <h3 className="text-2xl font-semibold text-gray-800 mb-1">{property.title}</h3>
+                  <p className="text-gray-500">{property.location}</p>
+                  <p className="text-lg text-blue-600 font-semibold mt-2">£{property.price} / month</p>
+                  <span className="inline-block mt-2 text-sm px-3 py-1 bg-blue-100 text-blue-700 rounded-full">
+                    {property.type}
+                  </span>
+                </div>
+              ))}
+
+              {filteredData.length === 0 && (
+                <p className="col-span-full text-center text-gray-500 text-lg">
+                  No matching properties found.
+                </p>
+              )}
+            </div>
+          </div>
+        </section>
+        <Footer />
       </div>
-    </section>
+    </div>
   );
 };
 
 export default SearchPropertiesSection;
-
