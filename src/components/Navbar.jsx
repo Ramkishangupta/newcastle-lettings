@@ -12,7 +12,7 @@ import {
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Logo from "../assets/Images/Logo/logo.png";
-import LogoBlack from "../assets/Images/Logo/logoBlack.png"
+import LogoBlack from "../assets/Images/Logo/logoBlack.png";
 
 const navItems = [
   { name: "Search Properties", path: "/" },
@@ -65,12 +65,18 @@ const DesktopNav = ({
     }`}
   >
     <div className="flex flex-col items-start">
-      {/* <span className={`text-5xl font-bold ${isScrolled ? 'text-black' : 'text-white'}`}>NL</span> */}
-      <img
+      <span
+        className={`text-5xl font-bold ${
+          isScrolled ? "text-black" : "text-white"
+        }`}
+      >
+        NL
+      </span>
+      {/* <img
         src={isScrolled ? LogoBlack : Logo}
         alt="Logo"
         className={`w-60 h-full'}`}
-      />
+      /> */}
     </div>
 
     <div className="flex-1 flex justify-center space-x-12">
@@ -142,7 +148,12 @@ const MobileNav = ({
         isScrolled ? "bg-[#233366]" : "bg-transparent"
       }`}
     >
-      <span className="text-white text-4xl font-bold">NL</span>
+      {/* <span className="text-white text-4xl font-bold">NL</span> */}
+      <img
+        src={Logo}
+        alt="Logo"
+        className={`w-30 h-full'}`}
+      />
       <div className="flex items-center gap-6">
         <button onClick={() => setSearchOpen(!searchOpen)}>
           <FaSearch className="text-white text-xl" />
