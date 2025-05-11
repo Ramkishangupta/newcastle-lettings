@@ -82,8 +82,8 @@ const DesktopNav = ({ navItems, isScrolled, setOpenDropdown, openDropdown }) => 
 const MobileNav = ({ mobileOpen, setMobileOpen, searchOpen, setSearchOpen, mobileDropdown, setMobileDropdown, isScrolled }) => (
   <>
     <div className={`md:hidden w-full flex items-center justify-between px-4 py-4 ${isScrolled ? 'bg-[#233366]' : 'bg-transparent'}`}>
-      searchPrope<img src={logo} alt="Logo" className="h-10 w-auto" />
-rties
+      <img src={logo} alt="Logo" className="h-10 w-auto" />
+
       <div className="flex items-center gap-6">
         <button onClick={() => setSearchOpen(!searchOpen)}><FaSearch className="text-white text-xl" /></button>
         <button onClick={() => setMobileOpen(!mobileOpen)}><Hamburger open={mobileOpen} /></button>
