@@ -65,18 +65,18 @@ const DesktopNav = ({
     }`}
   >
     <div className="flex flex-col items-start">
-      <span
+      {/* <span
         className={`text-5xl font-bold ${
           isScrolled ? "text-black" : "text-white"
         }`}
       >
         NL
-      </span>
-      {/* <img
+      </span> */}
+      <img
         src={isScrolled ? LogoBlack : Logo}
         alt="Logo"
         className={`w-60 h-full'}`}
-      /> */}
+      />
     </div>
 
     <div className="flex-1 flex justify-center space-x-12">
