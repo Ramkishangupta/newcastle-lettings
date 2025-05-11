@@ -149,11 +149,7 @@ const MobileNav = ({
       }`}
     >
       {/* <span className="text-white text-4xl font-bold">NL</span> */}
-      <img
-        src={Logo}
-        alt="Logo"
-        className={`w-30 h-full'}`}
-      />
+      <img src={Logo} alt="Logo" className={`w-30 h-full'}`} />
       <div className="flex items-center gap-6">
         <button onClick={() => setSearchOpen(!searchOpen)}>
           <FaSearch className="text-white text-xl" />
@@ -175,7 +171,8 @@ const MobileNav = ({
         >
           {/* Header */}
           <div className="flex items-center justify-between px-4 py-4">
-            <span className="text-white text-4xl font-bold">NL</span>
+            {/* <span className="text-white text-4xl font-bold">NL</span> */}
+            <img src={Logo} alt="Logo" className={`w-30 h-full'}`} />
             <button onClick={() => setMobileOpen(false)}>
               <Hamburger open />
             </button>
