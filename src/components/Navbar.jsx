@@ -2,9 +2,10 @@ import { useState, useEffect, memo, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaSearch, FaEnvelope, FaPhone, FaInstagram, FaLinkedinIn, FaTwitter, FaFacebookF, FaChevronDown } from 'react-icons/fa';
 import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import logo from '../assets/logo.png';
 
 const navItems = [
-  { name: 'Search Properties', path: '/' },
+  { name: 'Search Properties', path: '/searchproperty' },
   { name: 'Services', path: '/services' },
   { name: 'Property Maintenance', dropdown: ['Request Service', 'Maintenance Plans'], path: '/property-maintenance' },
   { name: 'Report A Repair', path: '/report-repair' },
@@ -24,9 +25,12 @@ const Hamburger = memo(({ open }) => (
 // Desktop Navbar
 const DesktopNav = ({ navItems, isScrolled, setOpenDropdown, openDropdown }) => (
   <div className={`hidden md:flex items-center justify-between px-12 py-6 w-full ${isScrolled ? 'bg-[#f0f0f0]' : 'bg-transparent'}`}>
-    <div className="flex flex-col items-start">
-      <span className={`text-5xl font-bold ${isScrolled ? 'text-black' : 'text-white'}`}>NL</span>
-    </div>
+    <div className="flex items-center">
+  <Link to="/">
+    <img src={logo} alt="Logo" className="h-12 w-auto" />
+  </Link>
+</div>
+
 
     <div className="flex-1 flex justify-center space-x-12">
       {navItems.map(({ name, dropdown, path }) => (
@@ -78,7 +82,8 @@ const DesktopNav = ({ navItems, isScrolled, setOpenDropdown, openDropdown }) => 
 const MobileNav = ({ mobileOpen, setMobileOpen, searchOpen, setSearchOpen, mobileDropdown, setMobileDropdown, isScrolled }) => (
   <>
     <div className={`md:hidden w-full flex items-center justify-between px-4 py-4 ${isScrolled ? 'bg-[#233366]' : 'bg-transparent'}`}>
-      <span className="text-white text-4xl font-bold">SW</span>
+      searchPrope<img src={logo} alt="Logo" className="h-10 w-auto" />
+rties
       <div className="flex items-center gap-6">
         <button onClick={() => setSearchOpen(!searchOpen)}><FaSearch className="text-white text-xl" /></button>
         <button onClick={() => setMobileOpen(!mobileOpen)}><Hamburger open={mobileOpen} /></button>
@@ -96,7 +101,8 @@ const MobileNav = ({ mobileOpen, setMobileOpen, searchOpen, setSearchOpen, mobil
         >
           {/* Header */}
           <div className="flex items-center justify-between px-4 py-4">
-            <span className="text-white text-4xl font-bold">SW</span>
+            searchPrope<img src={logo} alt="Logo" className="h-10 w-auto" />
+rties
             <button onClick={() => setMobileOpen(false)}><Hamburger open /></button>
           </div>
 
