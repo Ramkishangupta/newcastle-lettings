@@ -15,7 +15,7 @@ import Logo from "../assets/Images/Logo/logo.png";
 import LogoBlack from "../assets/Images/Logo/logoBlack.png";
 
 const navItems = [
-  { name: "Search Properties", path: "/searchproperties" },
+  { name: "Search Properties", path: "/" },
   { name: "Services", path: "/services" },
   {
     name: "Property Maintenance",
