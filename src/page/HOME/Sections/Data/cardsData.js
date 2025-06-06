@@ -19,7 +19,7 @@ const cardsData = [
       price: 950,
       beds: 1,
       baths: 1,
-      floors: 3,
+      floors: 5,
     },
     {
         id: 3,
