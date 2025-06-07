@@ -53,13 +53,17 @@ const Card = ({
       {/* Button Section */}
       <div className="flex justify-center items-center p-4">
         <button
-          type="button"
-          onClick={handleClick}
-          className="w-[200px] text-[#233366] border-2 border-[#233366] font-semibold py-2 text-center cursor-pointer transition-colors duration-300 hover:bg-[#233366] hover:text-white"
-          aria-label={`View details for ${title}`} 
+         type="button"
+         onClick={handleClick}
+         className="relative w-[200px] py-2 border-2 border-[#233366] text-[#233366] font-semibold overflow-hidden z-0 group"
+         aria-label={`View details for ${title}`}
         >
-          View
+        <span className="relative z-10 group-hover:text-white transition-colors duration-300">View</span>
+        <span
+         className="absolute left-0 top-0 h-full w-0 bg-gradient-to-r from-[#233366] to-[#4c5f99] transition-all duration-300 group-hover:w-full z-0"
+        ></span>
         </button>
+
       </div>
     </div>
   );
